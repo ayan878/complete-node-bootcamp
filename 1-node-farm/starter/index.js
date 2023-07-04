@@ -1,5 +1,8 @@
+const { isUtf8 } = require("buffer");
 const fs = require("fs");
 const http = require("http");
+const { json } = require("stream/consumers");
+const url = require("url");
 
 //blocking, Synchronous way
 // const textIn = fs.readFileSync("txt/input.txt", "utf-8");
@@ -12,8 +15,8 @@ const http = require("http");
 // fs.readFile("./txt/start.txt", "utf-8", (err, data1) => {
 //   if (err) return console.log("Error!💥");
 //   console.log(data1);
-  //NodeJs is start doing in background and will not block the code and it immidiatly move in next code
-  //thats why is first print the line no 18 than 13
+//NodeJs is start doing in background and will not block the code and it immidiatly move in next code
+//thats why is first print the line no 18 than 13
 //   fs.readFile("./txt/read-this.txt", "utf-8", (err, data2) => {
 //     console.log(data2);
 //     fs.readFile("./txt/append.txt", "utf-8", (err, data3) => {
@@ -27,11 +30,56 @@ const http = require("http");
 // console.log("will read file!");
 
 ///////////////////////////////////////////////////////
-// Server 
-const server = http.createServer((req, res)=>{
-    res.end('Hello from the server!');   
+// Server
+const tempOverview = fs.readFileSync(
+  `${__dirname}/templates/template-overview.html`,
+  "utf-8"
+);
+const tempCard = fs.readFileSync(
+  `${__dirname}/templates/template-card.html`,
+  "utf-8"
+);
+const tempProduct = fs.readFileSync(
+  `${__dirname}/templates/template-product.html`,
+  "utf-8"
+);
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+
+const dataObj = JSON.parse(data);
+
+const server = http.createServer((req, res) => {
+  const pathName = req.url;
+
+  //OVERVIEW PAGE
+  if (pathName === "/" || pathName === "/overview") {
+    // res.end("<h1>You are my Love &#128151</h1>");
+    res.writeHead(200, { "Content-type": "text/html" });
+
+    const cardsHtml = dataObj
+      .map((el) => replaceTemplate(tempCard, el))
+      .join("");
+    const output = tempOverview.replace("{%PRODUCT_CARDS%}", cardsHtml);
+    res.end(output);
+  }
+  //PRODUCT PAGE
+  else if (pathName === "/product") {
+    res.end(tempProduct);
+  }
+  //API
+  else if (pathName === "/api") {
+    res.writeHead(200, { "Content-type": "application/json" });
+    res.end(data);
+  }
+  //NOT FOUND
+  else {
+    res.writeHead(404, {
+      "Content-type": "text/html",
+      "my-own-header": "hello-world",
+    });
+    res.end("<h1>Page not found!</h1>");
+  }
 });
 
-server.listen(8000,'127.0.0.1',()=>{
-    console.log('Listening to request on port 8000');
+server.listen(8000, "127.0.0.1", () => {
+  console.log("Listening to request on port 8000");
 });

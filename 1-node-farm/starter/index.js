@@ -33,12 +33,12 @@ const url = require("url");
 // Server
 const replaceTemplate = (temp, product) => {
   let output = temp.replace(/{%PRODUCTNAME%}/g, product.productName);
-  output = temp.replace(/{%IMAGE%}/g, product.image);
+  output = output.replace(/{%IMAGE%}/g, product.image);
   output = output.replace(/{%PRICE%}/g, product.price);
   output = output.replace(/{%FROM%}/g, product.from);
   output = output.replace(/{%NUTRIENTS%}/g, product.nutrients);
   output = output.replace(/{%QUANTITY%}/g, product.quantity);
-  output = output.replace(/{%DESCRIPTION%}/g, product.Description);
+  output = output.replace(/{%DESCRIPTION%}/g, product.description);
   output = output.replace(/{%ID%}/g, product.id);
 
   if (!product.organic)
@@ -66,7 +66,7 @@ const server = http.createServer((req, res) => {
 
   //OVERVIEW PAGE
   if (pathName === "/" || pathName === "/overview") {
-    // res.end("<h1>You are my Love &#128151</h1>");
+
     res.writeHead(200, { "Content-type": "text/html" });
 
     const cardsHtml = dataObj
@@ -77,7 +77,12 @@ const server = http.createServer((req, res) => {
   }
   //PRODUCT PAGE
   else if (pathName === "/product") {
-    res.end(tempProduct);
+     const product = dataObj
+       .map((el) => replaceTemplate(tempProduct, el))
+       .join("");
+     const output = tempProduct.replace(tempProduct, product);
+     res.end(output);
+    // res.end(tempProduct);
   }
   //API
   else if (pathName === "/api") {

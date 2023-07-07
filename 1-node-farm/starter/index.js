@@ -3,7 +3,7 @@ const fs = require("fs");
 const http = require("http");
 const { json } = require("stream/consumers");
 const url = require("url");
-const replaceTemplate=require('./modules/replaceTemplates')
+const replaceTemplate = require("./modules/replaceTemplates");
 
 //blocking, Synchronous way
 // const textIn = fs.readFileSync("txt/input.txt", "utf-8");
@@ -65,12 +65,12 @@ const server = http.createServer((req, res) => {
   }
   //PRODUCT PAGE
   else if (pathname === "/product") {
-   res.writeHead(200, {
-     "Content-type": "text/html",
-   });
-   const product = dataObj[query.id];
-   const output = replaceTemplate(tempProduct, product);
-   res.end(output);
+    res.writeHead(200, {
+      "Content-type": "text/html",
+    });
+    const product = dataObj[query.id];
+    const output = replaceTemplate(tempProduct, product);
+    res.end(output);
     // res.end(tempProduct);
   }
   //API

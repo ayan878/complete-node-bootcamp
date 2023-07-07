@@ -1,9 +1,11 @@
-const { isUtf8 } = require("buffer");
+
 const fs = require("fs");
 const http = require("http");
 const { json } = require("stream/consumers");
 const url = require("url");
+const slugify = require("slugify");
 const replaceTemplate = require("./modules/replaceTemplates");
+
 
 //blocking, Synchronous way
 // const textIn = fs.readFileSync("txt/input.txt", "utf-8");
@@ -48,6 +50,10 @@ const tempProduct = fs.readFileSync(
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
 
 const dataObj = JSON.parse(data);
+
+const slugs = dataObj.map(el=>slugify(el.productName,{lower:true}));
+console.log(slugs);
+
 
 const server = http.createServer((req, res) => {
   // console.log(req,res);

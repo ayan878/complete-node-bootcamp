@@ -15,4 +15,4 @@ we can use node.js on the ther server side the of web development. it build fast
 
 - EJS stands for Embedded JavaScript, and it's a popular templating engine for Node.js. It allows you to embed JavaScript code directly within HTML markup, enabling dynamic content generation on the server-side `{%Placeholder%}`.
 
-- Slugify: it is tools or package.Slugify functions often remove spaces, punctuation, and special characters, convert uppercase letters to lowercase, and replace spaces with hyphens or underscores. It helps improve the SEO (Search Engine Optimization) of a website by making URLs more descriptive and user-friendly.i
+- Slugify: it is tools or package.Slugify functions often remove spaces, punctuation, and special characters, convert uppercase letters to lowercase, and replace spaces with hyphens or underscores. It helps improve the SEO (Search Engine Optimization) of a website by making URLs more descriptive and user-friendly.

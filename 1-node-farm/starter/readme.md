@@ -69,7 +69,27 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
             - Port Number : Defualt 443 for https and 80 for http
         
         - Step 2: A TCP/IP Socket Connection is eshtablished between browser ans server.
-        - Step 3: Http Request - it allows client and web server to communicate.HTTP methods used in request is GET,POST,PUT etc
+        - Step 3: HTTP Request - it allows client and web server to communicate.HTTP methods used in request is GET,POST,PUT etc
             - GET: For Requesting data
             - POST: For Sending data
             - PUT & PATCH: For Modifying data
+
+            - HTTP Request headers:
+                - HOST:www.google.com
+                - User-Agent:Mozilla/5.0
+                - Accept-language:en-US
+            - Request body: only when sending data to server , eg.POST
+
+        - Step 4: HTTP Response
+            - HTTP version 
+            - status code
+                - 200 : ok
+                - 404 : not found
+                - 401 : unauthrized
+            - status message
+            - HTTP response headers:
+                - Date:12/04/2024
+                - Content-type:text/html or application.json
+                - Transfer-Encoding:chunked
+            - Body: Response body (html,json data)
+

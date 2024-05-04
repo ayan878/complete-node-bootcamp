@@ -2,6 +2,8 @@ const fs = require('fs');
 const http = require('http');
 const { json } = require('stream/consumers');
 const url = require('url');
+
+// Slugify functions often remove spaces, punctuation, and special characters, convert uppercase letters to lowercase, and replace spaces with hyphens or underscores. It helps improve the SEO (Search Engine Optimization) of a website by making URLs more descriptive and user-friendly.
 const slugify = require('slugify');
 const replaceTemplate = require('./modules/replaceTemplates');
 
@@ -33,6 +35,10 @@ const replaceTemplate = require('./modules/replaceTemplates');
 ///////////////////////////////////////////////////////
 // Server
 
+// const server = http.createServer((req, res) => {
+//   res.end('Hello from the server!');
+// });
+
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
   'utf-8'
@@ -63,6 +69,7 @@ const server = http.createServer((req, res) => {
     const cardsHtml = dataObj
       .map((el) => replaceTemplate(tempCard, el))
       .join('');
+    console.log(cardsHtml);
     const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml);
     res.end(output);
   }

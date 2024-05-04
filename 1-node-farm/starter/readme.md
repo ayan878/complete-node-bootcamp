@@ -48,9 +48,22 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
 # "nodemon": "^2.0.22"
 
     - 2 is major version,0 is minor version, 22 is patch(fix bug)
-    ![Version](https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg)
 
 # ~ and ^
 
     - Using a tilde (~) before the version number of the dependency package means that we will accept only further patch releases from the version specified but will not receive any major or minor release if we were to install or update our dependency package.
     - Using a caret (^) before the version number of the dependency package means that we can accept both patch and minor releases from the version specified but will not receive any major release if we were to install or update our dependency package.
+
+# How the web actually works or What happend when we access a webpage ?
+    - Browser which also call client send a request to server where web page is hosted and then server send back response which is contained webpage. this process is known as Request-response model or Client-server architecture.
+    - let we wanna access google by writing https://www.google.com/maps
+        - Protocol:https or https is protocol
+        - Domain:google.com
+        - Resourse:maps (which we wnat to access)
+    -  Domain name is not actual real address of the server that we want to access but just a nice name to easy for us to memorize. we need to way of kind converting domain name real address of the server that happend through DNS (Domain name server). DNS is like phone directory of internet.
+        - Step 1: when we open up website, browser makes a request to DNS (a special server) and DNS simply match web address which is type in the broswer to real server IP address.this happend through internet service provider (IPS).
+        - Step 2: after that DNS is converted into real ip address https://216.58.211.206:443 which browser can then call after send back to browser
+        - https://216.58.211.206:443
+            - Protocol : https ot http
+            - Ip Address:216.58.211.206:
+            - Port Number : Defualt 443 for https and 80 for http

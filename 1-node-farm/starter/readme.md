@@ -55,6 +55,7 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
     - Using a caret (^) before the version number of the dependency package means that we can accept both patch and minor releases from the version specified but will not receive any major release if we were to install or update our dependency package.
 
 # How the web actually works or What happend when we access a webpage ?
+
     - Browser which also call client send a request to server where web page is hosted and then server send back response which is contained webpage. this process is known as Request-response model or Client-server architecture.
     - let we wanna access google by writing https://www.google.com/maps
         - Protocol:https or https is protocol
@@ -67,9 +68,9 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
             - Protocol : https ot http
             - Ip Address:216.58.211.206:
             - Port Number : Defualt 443 for https and 80 for http
-        
+
         - Step 2: A TCP/IP Socket Connection is eshtablished between browser ans server.
-            - Break up the request and response into chunks(packets) before send.then they gets destination it will re-assemble all the packets into original reques and response. 
+            - Break up the request and response into chunks(packets) before send.then they gets destination it will re-assemble all the packets into original reques and response.
         - Step 3: HTTP Request - it allows client and web server to communicate.HTTP methods used in request is GET,POST,PUT etc
             - GET: For Requesting data
             - POST: For Sending data
@@ -82,7 +83,7 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
             - Request body: only when sending data to server , eg.POST
 
         - Step 4: HTTP Response
-            - HTTP version 
+            - HTTP version
             - status code
                 - 200 : ok
                 - 404 : not found
@@ -95,3 +96,4 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
             - Body: Response body (html,json data)
         - Step 5: Render the page
 
+![async & defer](https://i.pinimg.com/originals/60/00/6c/60006ca56d733c481cc5ca28711c7643.png)

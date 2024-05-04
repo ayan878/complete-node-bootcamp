@@ -41,11 +41,11 @@ They are typically installed using a package manager like npm or yarn with the -
 Global dependencies are accessible from any project on your system and are not tied to a specific project's directory.
 Examples of global dependencies include CLI tools like create-react-app or nodemon, which are used for project scaffolding or development workflows.
 
+# Sementic version
+
 ![Semantic Versioning](https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg)
 
 # "nodemon": "^2.0.22"
-
-    ![Semantic Versioning](https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg)
 
     - 2 is major version,0 is minor version, 22 is patch(fix bug)
     ![Version](https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg)

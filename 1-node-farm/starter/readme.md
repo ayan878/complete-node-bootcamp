@@ -43,6 +43,8 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
 
 # "nodemon": "^2.0.22"
 
+    ![Semantic Versioning](https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg)
+
     - 2 is major version,0 is minor version, 22 is patch(fix bug)
     ![Version](https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg)
 

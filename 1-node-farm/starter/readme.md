@@ -16,3 +16,19 @@ we can use node.js on the ther server side the of web development. it build fast
 - EJS stands for Embedded JavaScript, and it's a popular templating engine for Node.js. It allows you to embed JavaScript code directly within HTML markup, enabling dynamic content generation on the server-side `{%Placeholder%}`.
 
 - Slugify: it is tools or package.Slugify functions often remove spaces, punctuation, and special characters, convert uppercase letters to lowercase, and replace spaces with hyphens or underscores. It helps improve the SEO (Search Engine Optimization) of a website by making URLs more descriptive and user-friendly.
+
+# Local Dependency:
+Local dependencies are packages or modules installed in the current project's directory.
+They are typically listed in the dependencies or devDependencies section of the project's package.json file.
+Local dependencies are usually required for the project to run or develop, and they are specific to that project.
+Examples include libraries like Express.js, React, or lodash that are used in the project.
+# Development Dependency (devDependency):
+Development dependencies are packages or modules that are only needed during the development phase of a project.
+They are also listed in the devDependencies section of the project's package.json file.
+Development dependencies include tools like testing frameworks (e.g., Jest, Mocha), bundlers (e.g., Webpack, Parcel), or linters (e.g., ESLint, Prettier).
+These dependencies are not required for the production deployment of the project but are necessary for development tasks such as testing, linting, or building the project. 
+# Global Dependency:
+Global dependencies are packages or modules installed globally on your system, rather than within a specific project.
+They are typically installed using a package manager like npm or yarn with the -g flag.
+Global dependencies are accessible from any project on your system and are not tied to a specific project's directory.
+Examples of global dependencies include CLI tools like create-react-app or nodemon, which are used for project scaffolding or development workflows.

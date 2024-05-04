@@ -9,6 +9,7 @@
   "author": "Ayan Raza",
   "license": "ISC",
   "dependencies": {
+    "global": "^4.4.0",
     "slugify": "^1.6.6"
   },
   "devDependencies": {

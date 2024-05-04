@@ -43,7 +43,8 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
 
 # "nodemon": "^2.0.22"
     - 2 is major version,0 is minor version, 22 is patch(fix bug)
-    ![https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg](image.png)
+    <!-- ![https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg](image.png) -->
+    <img src="https://codeforgeek.com/wp-content/uploads/2023/03/major-minor-patch-semantic-versioning.jpg">
 # ~ and ^
     - Using a tilde (~) before the version number of the dependency package means that we will accept only further patch releases from the version specified but will not receive any major or minor release if we were to install or update our dependency package.
     - Using a caret (^) before the version number of the dependency package means that we can accept both patch and minor releases from the version specified but will not receive any major release if we were to install or update our dependency package.

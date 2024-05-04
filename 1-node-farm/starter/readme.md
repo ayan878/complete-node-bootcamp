@@ -62,8 +62,14 @@ Examples of global dependencies include CLI tools like create-react-app or nodem
         - Resourse:maps (which we wnat to access)
     -  Domain name is not actual real address of the server that we want to access but just a nice name to easy for us to memorize. we need to way of kind converting domain name real address of the server that happend through DNS (Domain name server). DNS is like phone directory of internet.
         - Step 1: when we open up website, browser makes a request to DNS (a special server) and DNS simply match web address which is type in the broswer to real server IP address.this happend through internet service provider (IPS).
-        - Step 2: after that DNS is converted into real ip address https://216.58.211.206:443 which browser can then call after send back to browser
+        after that DNS is converted into real ip address https://216.58.211.206:443 which browser can then call after send back to browser
         - https://216.58.211.206:443
             - Protocol : https ot http
             - Ip Address:216.58.211.206:
             - Port Number : Defualt 443 for https and 80 for http
+        
+        - Step 2: A TCP/IP Socket Connection is eshtablished between browser ans server.
+        - Step 3: Http Request - it allows client and web server to communicate.HTTP methods used in request is GET,POST,PUT etc
+            - GET: For Requesting data
+            - POST: For Sending data
+            - PUT & PATCH: For Modifying data

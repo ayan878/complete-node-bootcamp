@@ -113,3 +113,31 @@ In essence, during the initialization phase, Node.js sets up the environment and
 6. **Close Callbacks Phase**: Executes callbacks registered via `close` events, like `socket.on('close', ...)`.
 
 ![phase](https://miro.medium.com/v2/resize:fit:700/1*7BWoV9593JHdm8M-UF-tYQ.png)
+
+```markdown
+## `process.nextTick` vs. Microtasks in Node.js
+
+### `process.nextTick`:
+- `process.nextTick` is a method provided by the Node.js runtime for scheduling callback functions to be executed asynchronously but before any I/O event is fired.
+- Callbacks scheduled with `process.nextTick` are executed immediately after the current operation completes, regardless of the current phase of the event loop.
+- They have higher priority than other asynchronous operations such as I/O operations, timers, or microtasks.
+- Example:
+  ```javascript
+  process.nextTick(() => {
+      console.log('This will be executed next tick');
+  });
+  ```
+
+### Microtasks:
+- Microtasks are another type of asynchronous operation, scheduled at the end of the current event loop iteration but before the next event loop cycle begins.
+- Often used for scheduling small, high-priority tasks that need to be executed before the next event loop cycle, such as promise callbacks (`then` and `catch`).
+- Implemented using the `Promise` API in JavaScript.
+- Examples include promise callbacks (`then` and `catch`) and `queueMicrotask`.
+- Example:
+  ```javascript
+  Promise.resolve().then(() => {
+      console.log('This will be executed as a microtask');
+  });
+  ```
+```
+This markdown text explains the differences between `process.nextTick` and microtasks in Node.js, including their behavior and usage.

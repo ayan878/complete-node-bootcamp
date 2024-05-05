@@ -74,3 +74,7 @@ In simple terms, Node.js can juggle multiple tasks at once, even though it techn
 - **Start Event Loop**: After initialization, Node.js starts the event loop to handle asynchronous operations and callbacks.
 
 In essence, during the initialization phase, Node.js sets up the environment and prepares for the execution of the application's code, including any asynchronous operations that may occur.
+
+# What is the purpose of the thread pool in Node.js?
+- The thread pool in Node.js is used to offload heavy or blocking operations from the event loop, ensuring that the application remains responsive. When a heavy task is encountered, such as file I/O or cryptographic operations, DNS lookup, it is handed off to the thread pool where it is executed asynchronously in separate threads. This allows the event loop to continue processing other tasks while the heavy operation is performed in the background.
+      By utilizing the thread pool, Node.js can efficiently handle concurrent operations without blocking the main event loop. This helps improve the overall performance and scalability of Node.js applications, especially in scenarios where multiple I/O-bound or CPU-bound tasks need to be processed simultaneously.

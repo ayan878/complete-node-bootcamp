@@ -114,7 +114,7 @@ In essence, during the initialization phase, Node.js sets up the environment and
 
 ![phase](https://miro.medium.com/v2/resize:fit:700/1*7BWoV9593JHdm8M-UF-tYQ.png)
 
-```markdown
+
 ## `process.nextTick` vs. Microtasks in Node.js
 
 ### `process.nextTick`:
@@ -139,7 +139,7 @@ In essence, during the initialization phase, Node.js sets up the environment and
       console.log('This will be executed as a microtask');
   });
   ```
-```
+  
 ## How to Prevent Blocking the Event Loop
 
 1. **Avoid Synchronous File System Operations**:

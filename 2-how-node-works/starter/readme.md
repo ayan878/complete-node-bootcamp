@@ -140,4 +140,42 @@ In essence, during the initialization phase, Node.js sets up the environment and
   });
   ```
 ```
-This markdown text explains the differences between `process.nextTick` and microtasks in Node.js, including their behavior and usage.
+## How to Prevent Blocking the Event Loop
+
+1. **Avoid Synchronous File System Operations**:
+   - Instead of using synchronous functions like `fs.readFileSync`, prefer their asynchronous counterparts such as `fs.readFile`.
+   - Example:
+     ```javascript
+     // Synchronous file read operation (blocking)
+     const data = fs.readFileSync('file.txt', 'utf8');
+     ```
+
+2. **Avoid Complex Calculations**:
+   - Avoid performing CPU-intensive operations, especially nested loops or recursive functions, that may block the event loop.
+   - Example:
+     ```javascript
+     // Nested loop example (potentially blocking)
+     for (let i = 0; i < 1000; i++) {
+         for (let j = 0; j < 1000; j++) {
+             // Complex calculations
+         }
+     }
+     ```
+
+3. **Be Mindful of JSON Operations**:
+   - When working with large JSON objects, be cautious as parsing or stringifying them can be CPU-intensive and block the event loop.
+   - Example:
+     ```javascript
+     // Parsing a large JSON object (blocking)
+     const largeObject = JSON.parse(jsonString);
+     ```
+
+4. **Avoid Complex Regular Expressions**:
+   - Complex regular expressions, especially those with nested quantifiers or backtracking, can lead to blocking behavior.
+   - Example:
+     ```javascript
+     // Complex regular expression (potentially blocking)
+     const regex = /(a+)+b/;
+     ```
+
+By following these guidelines and avoiding synchronous and CPU-intensive operations, you can prevent blocking the event loop and ensure the responsiveness of your Node.js applications.

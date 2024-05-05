@@ -83,3 +83,33 @@ In essence, during the initialization phase, Node.js sets up the environment and
 - the event loop in Node.js runs within a single thread of the main process. This event loop continuously iterates, handling asynchronous operations and callbacks efficiently, ensuring that Node.js remains non-blocking and responsive.
 - All the application code that is inside the callback functions (non-top-level code).
 - Node.js is designed around callback functions, which play a central role in handling asynchronous tasks and maintaining non-blocking behavior.
+- **Event-driven architeture:**
+    - Event are emitted
+    - Event loops picks them up
+    - Callbacks are called
+
+## Phases of the Node.js Event Loop
+
+1. **Timers Phase**: Executes callbacks scheduled by `setTimeout()` and `setInterval()`. For example:
+    ```javascript
+    setTimeout(() => {
+        console.log('Timer callback executed!');
+    }, 1000);
+    ```
+
+2. **Pending Callbacks Phase**: Executes I/O callbacks deferred from the previous cycle, such as network requests and file system operations.
+
+3. **Idle and Prepare Phases**: Internal phases generally not used in user-space code.
+
+4. **Poll Phase**: Waits for new I/O events to occur. If no pending callbacks exist, Node.js will wait for events to be triggered.
+
+5. **Check Phase**: Executes `setImmediate()` callbacks. For example:
+    ```javascript
+    setImmediate(() => {
+        console.log('Immediate callback executed!');
+    });
+    ```
+
+6. **Close Callbacks Phase**: Executes callbacks registered via `close` events, like `socket.on('close', ...)`.
+
+![phase](https://miro.medium.com/v2/resize:fit:700/1*7BWoV9593JHdm8M-UF-tYQ.png)

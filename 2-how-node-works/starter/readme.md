@@ -31,50 +31,55 @@
 
 In simple terms, Node.js can juggle multiple tasks at once, even though it technically only does one thing at a time.
 
-
 # What Happens in a Single Thread When We Start a Node.js Application
 
 - **Initialization**: When we start a Node.js application, the program initializes by executing the top-level code. This includes loading all required modules and registering any callbacks needed for asynchronous operations.
 
-    ```javascript
-    // Example of top-level code
-    const fs = require('fs');
-    const http = require('http');
-    ```
+  ```javascript
+  // Example of top-level code
+  const fs = require("fs");
+  const http = require("http");
+  ```
 
 - **Execution of Top-Level Code**: All code present at the top level of the application is executed in sequence. This could involve variable declarations, function definitions, and other synchronous operations.
 
-    ```javascript
-    // Example of top-level code execution
-    const greeting = 'Hello, World!';
-    console.log(greeting);
-    ```
+  ```javascript
+  // Example of top-level code execution
+  const greeting = "Hello, World!";
+  console.log(greeting);
+  ```
 
-- **Loading Required Modules**: Node.js loads all required modules, including core modules and external dependencies, to prepare the environment for execution. 
+- **Loading Required Modules**: Node.js loads all required modules, including core modules and external dependencies, to prepare the environment for execution.
 
-    ```javascript
-    // Example of loading required modules
-    const fs = require('fs');
-    const http = require('http');
-    ```
+  ```javascript
+  // Example of loading required modules
+  const fs = require("fs");
+  const http = require("http");
+  ```
 
 - **Registration of Callbacks**: Any asynchronous operations, such as file I/O or network requests, may involve registering callback functions to be executed when those operations complete.
 
-    ```javascript
-    // Example of registering callback for file read operation
-    fs.readFile('example.txt', 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading file:', err);
-            return;
-        }
-        console.log('File content:', data);
-    });
-    ```
+  ```javascript
+  // Example of registering callback for file read operation
+  fs.readFile("example.txt", "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading file:", err);
+      return;
+    }
+    console.log("File content:", data);
+  });
+  ```
 
 - **Start Event Loop**: After initialization, Node.js starts the event loop to handle asynchronous operations and callbacks.
 
 In essence, during the initialization phase, Node.js sets up the environment and prepares for the execution of the application's code, including any asynchronous operations that may occur.
 
 # What is the purpose of the thread pool in Node.js?
+
 - The thread pool in Node.js is used to offload heavy or blocking operations from the event loop, ensuring that the application remains responsive. When a heavy task is encountered, such as file I/O or cryptographic operations, DNS lookup, it is handed off to the thread pool where it is executed asynchronously in separate threads. This allows the event loop to continue processing other tasks while the heavy operation is performed in the background.
-      By utilizing the thread pool, Node.js can efficiently handle concurrent operations without blocking the main event loop. This helps improve the overall performance and scalability of Node.js applications, especially in scenarios where multiple I/O-bound or CPU-bound tasks need to be processed simultaneously.
+  By utilizing the thread pool, Node.js can efficiently handle concurrent operations without blocking the main event loop. This helps improve the overall performance and scalability of Node.js applications, especially in scenarios where multiple I/O-bound or CPU-bound tasks need to be processed simultaneously.
+
+# Event Loop
+- the event loop in Node.js runs within a single thread of the main process. This event loop continuously iterates, handling asynchronous operations and callbacks efficiently, ensuring that Node.js remains non-blocking and responsive.
+- All the application code that is inside the callback functions (non-top-level code).
+- Node.js is designed around callback functions, which play a central role in handling asynchronous tasks and maintaining non-blocking behavior.

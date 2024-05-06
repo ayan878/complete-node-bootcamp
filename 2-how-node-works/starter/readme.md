@@ -263,4 +263,18 @@ fs.readFile("test-file.txt", () => {
 });
 
 // Synchronous log message
-console.log("Hello from the top-level code");```
+console.log("Hello from the top-level code");
+```
+
+### Output
+```
+Hello from the top-level code
+Timer 1 finished
+Immediate 1 finished
+I/O finished
+---------------------
+Process.nextTick
+Immediate 2 finished
+Timer 2 finished
+Timer 3 finished
+```

@@ -200,11 +200,31 @@ fs.readFile("test-file.txt", () => console.log("I/O finished"));
 console.log("Hello from the top-level code");
 ```
 
-### Output
+#### Certainly! Here's the explanation of the execution phase of the provided code:
 
+1. **Importing Modules**: The code begins by importing the `fs` module using `require("fs")`.
+
+2. **Timer and Immediate Callbacks Registration**: Two asynchronous operations are scheduled:
+   - A timer callback (`setTimeout`) is scheduled to be executed after 0 milliseconds.
+   - An immediate callback (`setImmediate`) is scheduled to be executed immediately after the current event loop iteration.
+
+3. **File Reading Operation**: An asynchronous file reading operation (`fs.readFile`) is initiated. This operation reads the contents of the file "test-file.txt" asynchronously.
+
+4. **Log Message**: A synchronous log message is printed to the console, indicating "Hello from the top-level code".
+
+5. **Event Loop Execution**: The event loop begins execution, handling the registered timer and immediate callbacks, as well as any I/O operations.
+
+6. **Execution of Immediate Callback**: Since `setImmediate` callbacks have higher priority in the event loop, the "Immediate 1 finished" message is printed first.
+
+7. **File Reading Completion**: Once the file reading operation completes, the corresponding callback (`() => console.log("I/O finished")`) is executed, printing "I/O finished".
+
+8. **Timer Callback Execution**: Finally, the timer callback (`() => console.log("Timer 1 finished")`) is executed, printing "Timer 1 finished".
+
+### Output
 ```
 Hello from the top-level code
 Timer 1 finished
 Immediate 1 finished
 I/O finished
 ```
+setTimer is set to 0 i.e, is print after top-level code.

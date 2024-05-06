@@ -191,7 +191,7 @@ By following these guidelines and avoiding synchronous and CPU-intensive operati
 
 - They are not in particular order This code is not have I/O cycle so its not running inside event loop it is not running inside any callback
 
-```
+``` javascript
 const fs = require("fs");
 setTimeout(() => console.log("Timer 1 finished"), 0);
 setImmediate(() => console.log("Immediate 1 finished"));
@@ -230,7 +230,7 @@ I/O finished
 setTimer is set to 0 i.e, it print after top-level code.
 
 ### This code involves I/O operations, so it runs inside the event loop.
-```
+``` javaScript
 const fs = require("fs");
 
 // Scheduled to execute after 0 milliseconds

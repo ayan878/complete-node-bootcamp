@@ -200,7 +200,7 @@ fs.readFile("test-file.txt", () => console.log("I/O finished"));
 console.log("Hello from the top-level code");
 ```
 
-# Output
+### Output
 
 ```
 Hello from the top-level code

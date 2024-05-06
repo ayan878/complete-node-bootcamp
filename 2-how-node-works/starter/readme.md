@@ -80,22 +80,24 @@ In essence, during the initialization phase, Node.js sets up the environment and
   By utilizing the thread pool, Node.js can efficiently handle concurrent operations without blocking the main event loop. This helps improve the overall performance and scalability of Node.js applications, especially in scenarios where multiple I/O-bound or CPU-bound tasks need to be processed simultaneously.
 
 # Event Loop
+
 - the event loop in Node.js runs within a single thread of the main process. This event loop continuously iterates, handling asynchronous operations and callbacks efficiently, ensuring that Node.js remains non-blocking and responsive.
 - All the application code that is inside the callback functions (non-top-level code).
 - Node.js is designed around callback functions, which play a central role in handling asynchronous tasks and maintaining non-blocking behavior.
 - **Event-driven architeture:**
-    - Event are emitted
-    - Event loops picks them up
-    - Callbacks are called
+  - Event are emitted
+  - Event loops picks them up
+  - Callbacks are called
 
 ## Phases of the Node.js Event Loop
 
 1. **Timers Phase**: Executes callbacks scheduled by `setTimeout()` and `setInterval()`. For example:
-    ```javascript
-    setTimeout(() => {
-        console.log('Timer callback executed!');
-    }, 1000);
-    ```
+
+   ```javascript
+   setTimeout(() => {
+     console.log("Timer callback executed!");
+   }, 1000);
+   ```
 
 2. **Pending Callbacks Phase**: Executes I/O callbacks deferred from the previous cycle, such as network requests and file system operations.
 
@@ -104,31 +106,33 @@ In essence, during the initialization phase, Node.js sets up the environment and
 4. **Poll Phase**: Waits for new I/O events to occur. If no pending callbacks exist, Node.js will wait for events to be triggered.
 
 5. **Check Phase**: Executes `setImmediate()` callbacks. For example:
-    ```javascript
-    setImmediate(() => {
-        console.log('Immediate callback executed!');
-    });
-    ```
+
+   ```javascript
+   setImmediate(() => {
+     console.log("Immediate callback executed!");
+   });
+   ```
 
 6. **Close Callbacks Phase**: Executes callbacks registered via `close` events, like `socket.on('close', ...)`.
 
 ![phase](https://miro.medium.com/v2/resize:fit:700/1*7BWoV9593JHdm8M-UF-tYQ.png)
 
-
 ## `process.nextTick` vs. Microtasks in Node.js
 
 ### `process.nextTick`:
+
 - `process.nextTick` is a method provided by the Node.js runtime for scheduling callback functions to be executed asynchronously but before any I/O event is fired.
 - Callbacks scheduled with `process.nextTick` are executed immediately after the current operation completes, regardless of the current phase of the event loop.
 - They have higher priority than other asynchronous operations such as I/O operations, timers, or microtasks.
 - Example:
   ```javascript
   process.nextTick(() => {
-      console.log('This will be executed next tick');
+    console.log("This will be executed next tick");
   });
   ```
 
 ### Microtasks:
+
 - Microtasks are another type of asynchronous operation, scheduled at the end of the current event loop iteration but before the next event loop cycle begins.
 - Often used for scheduling small, high-priority tasks that need to be executed before the next event loop cycle, such as promise callbacks (`then` and `catch`).
 - Implemented using the `Promise` API in JavaScript.
@@ -136,33 +140,36 @@ In essence, during the initialization phase, Node.js sets up the environment and
 - Example:
   ```javascript
   Promise.resolve().then(() => {
-      console.log('This will be executed as a microtask');
+    console.log("This will be executed as a microtask");
   });
   ```
-  
+
 ## How to Prevent Blocking the Event Loop
 
 1. **Avoid Synchronous File System Operations**:
+
    - Instead of using synchronous functions like `fs.readFileSync`, prefer their asynchronous counterparts such as `fs.readFile`.
    - Example:
      ```javascript
      // Synchronous file read operation (blocking)
-     const data = fs.readFileSync('file.txt', 'utf8');
+     const data = fs.readFileSync("file.txt", "utf8");
      ```
 
 2. **Avoid Complex Calculations**:
+
    - Avoid performing CPU-intensive operations, especially nested loops or recursive functions, that may block the event loop.
    - Example:
      ```javascript
      // Nested loop example (potentially blocking)
      for (let i = 0; i < 1000; i++) {
-         for (let j = 0; j < 1000; j++) {
-             // Complex calculations
-         }
+       for (let j = 0; j < 1000; j++) {
+         // Complex calculations
+       }
      }
      ```
 
 3. **Be Mindful of JSON Operations**:
+
    - When working with large JSON objects, be cautious as parsing or stringifying them can be CPU-intensive and block the event loop.
    - Example:
      ```javascript
@@ -179,3 +186,25 @@ In essence, during the initialization phase, Node.js sets up the environment and
      ```
 
 By following these guidelines and avoiding synchronous and CPU-intensive operations, you can prevent blocking the event loop and ensure the responsiveness of your Node.js applications.
+
+# Event Loop in Practice
+
+- They are not in particular order This code is not have I/O cycle so its not running inside event loop it is not running inside any callback
+
+```
+const fs = require("fs");
+setTimeout(() => console.log("Timer 1 finished"), 0);
+setImmediate(() => console.log("Immediate 1 finished"));
+
+fs.readFile("test-file.txt", () => console.log("I/O finished"));
+console.log("Hello from the top-level code");
+```
+
+# Output
+
+```
+Hello from the top-level code
+Timer 1 finished
+Immediate 1 finished
+I/O finished
+```

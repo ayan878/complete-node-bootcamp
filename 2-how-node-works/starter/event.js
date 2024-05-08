@@ -1,5 +1,12 @@
 const EventEmitter = require("events");
 
+
+class Sales extends EventEmitter{
+  constructor(){
+    super();
+    
+  }
+}
 const myEmitter = new EventEmitter();
 
 myEmitter.on("newSale", () => {

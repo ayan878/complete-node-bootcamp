@@ -332,3 +332,4 @@ It's a powerful mechanism for building asynchronous, event-driven applications i
 - Streams are used to process (read and write) data piece by piece (chunks) without completing the whole read-to-write operation and therefore without keeping all the data in memory.
   - For example, when we read a file using a stream, we read part of the data, perform operations on it, then free the memory and repeat this process until the entire file has been processed.
   - Streaming is commonly used by platforms like Netflix and YouTube for delivering continuous data streams efficiently.
+- Perfect for handling large volume of data, for example videos;

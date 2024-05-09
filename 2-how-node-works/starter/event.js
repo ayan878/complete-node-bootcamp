@@ -27,7 +27,15 @@ const server = http.createServer();
 
 server.on("request", (req, res) => {
   console.log("Request received");
-  res.end("Another request");
+  res.end("Request recieved");
+});
+
+server.on("request", (req, res) => {
+  res.end("Another recieved");
+});
+
+server.on("close", () => {
+  res.end("Server closed");
 });
 
 server.listen(8000, "127.0.0.1", () => {

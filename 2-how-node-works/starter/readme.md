@@ -298,6 +298,7 @@ server.on('requuest',(req,res)=>{
   res.end('Request recieved')
 })
 ```
+
 In the code snippet provided, `server` 127.0.0.1:8000 is the event emitter, `server.on` is setting up an event listener for the 'request' event, and the callback function `(req, res) => {...}` is the event handler that gets executed when the 'request' event occurs.
 
 Here's a breakdown:
@@ -307,7 +308,6 @@ Here's a breakdown:
 - **Event Listener (`server.on('request', ...)`)**: This is a function that listens for a specific event emitted by the event emitter. In this case, `server.on('request', ...)` sets up a listener for the 'request' event emitted by the `server` object.
 
 - **Event Handler (`(req, res) => {...}`)**: This is the callback function that gets executed when the event occurs. In this example, `(req, res) => {...}` is the event handler for the 'request' event. It receives the `req` (request) and `res` (response) objects as arguments, allowing you to handle the incoming request and send a response back to the client.
-
 
 ### In nodes there are certain object called event emmiter.
 
@@ -326,3 +326,8 @@ Here's a brief overview of how it works:
 The `EventEmitter` class provides methods like `on`, `once`, `emit`, and `removeListener` to manage event listeners.
 
 It's a powerful mechanism for building asynchronous, event-driven applications in Node.js, allowing different parts of your codebase to communicate efficiently through events.
+
+## Stream
+
+- Streams used to process (read and write) data piece (chunks) without completting the whole read to write operation and therefore without keeping all the data in memory.
+  eg, when we read file using stream we read part of data, do something with it then free memory and repeat it until the entire file has been process. netflix , youtube etc

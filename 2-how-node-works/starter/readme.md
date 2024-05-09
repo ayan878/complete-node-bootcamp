@@ -333,3 +333,10 @@ It's a powerful mechanism for building asynchronous, event-driven applications i
   - For example, when we read a file using a stream, we read part of the data, perform operations on it, then free the memory and repeat this process until the entire file has been processed.
   - Streaming is commonly used by platforms like Netflix and YouTube for delivering continuous data streams efficiently.
 - Perfect for handling large volume of data, for example videos;
+### There are four type of streams
+- Readable Steams:
+  - Streams from which we  can read data (consume) data.Streams are everywhere in core node module it bit like events
+    - for example http requests,fs read streams
+- Writable Streams
+- Duplex Streams
+- Transform Streams

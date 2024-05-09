@@ -336,7 +336,10 @@ It's a powerful mechanism for building asynchronous, event-driven applications i
 ### There are four type of streams
 - Readable Steams:
   - Streams from which we  can read data (consume) data.Streams are everywhere in core node module it bit like events
-    - for example http requests,fs read streams
+    - for example http requests,fs read streams.in case of readable stream they can emit and listen to many diffrent event. but the most important two are-
+        - data : it emitted when there is new piece of data to consume.
+        - end : it emitted as soon as there in no data to consume.
 - Writable Streams
 - Duplex Streams
 - Transform Streams
+Note: Streams are instance of EventEmiiter class, meaning all streams can emit and listen all name event.

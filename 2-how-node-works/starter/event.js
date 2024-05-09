@@ -26,10 +26,10 @@ myEmitter.emit("newSale", 9);
 const server = http.createServer();
 
 server.on("request", (req, res) => {
-  console.log("Request received"); // Corrected spelling of "received"
+  console.log("Request received");
   res.end("Another request");
 });
 
 server.listen(8000, "127.0.0.1", () => {
-  console.log("Waiting for requests..."); // Corrected log message
+  console.log("Waiting for requests...");
 });

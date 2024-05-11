@@ -376,3 +376,5 @@ To handle back pressure in Node.js streams, various strategies and mechanisms ca
 3. **Back Pressure-aware Streams**: Utilizing streams that are designed to handle back pressure effectively, such as the `Readable` and `Writable` streams provided by Node.js. These streams can automatically adjust their behavior based on the back pressure signals from the consumer.
 4. **HighWaterMark Option**: Configuring the `highWaterMark` option in streams to control the size of internal buffers. By adjusting the buffer size, you can optimize memory usage and reduce the risk of buffer overflow.
 5. **Error Handling**: Implementing error handling mechanisms to detect and respond to back pressure-related issues, such as buffer overflows or data loss. This may involve retrying failed operations or gracefully handling errors to prevent application crashes.
+
+In short,back pressure happend when response cant sent data nearly as fast as it it recieving it.

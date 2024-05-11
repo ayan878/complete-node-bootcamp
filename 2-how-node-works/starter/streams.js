@@ -8,7 +8,7 @@ server.on("request", (req, res) => {
     if (err) {
       console.error(err);
       res.statusCode = 500;
-      res.end("Error reading file");
+      res.end("Error reading file." + " " + err.message);
     } else {
       res.statusCode = 200;
       res.setHeader("Content-Type", "text/plain");
@@ -26,7 +26,7 @@ server.on("request", (req, res) => {
     res.end();
   });
   readable.on("error", (err) => {
-    res.statusCode(500);
+    res.statusCode = 500; // Corrected: assigning status code using '=' in express we can implement like res.status(500)
     res.end("File not found");
   });
 });

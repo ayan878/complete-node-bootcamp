@@ -404,6 +404,10 @@ In short,back pressure happend when response cant sent data nearly as fast as it
 (function(exports, require, module, __filename, __dirname) {
   // Module code lives here...
 });
+```
+This is an Immediately Invoked Function Expression (IIFE), which means it's a function that's executed immediately after it's defined. The purpose of this wrapper function is to encapsulate the module code and provide a separate scope for it.
+
+
 
 - **3.Execution**
 - **4.Returning exports**

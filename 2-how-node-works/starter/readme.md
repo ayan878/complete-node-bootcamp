@@ -390,13 +390,23 @@ In short,back pressure happend when response cant sent data nearly as fast as it
 - 👉 There have been attempts to bring ES modules to node.js (.mjs).
 
 ## What happens when we require() a module.
+
 - The following step are executed behind the scene.
 - **1.Resolving & Loading**: how does node.js know which file to load when we require module.we can load three kinds of module
-  
-  - ***1.Core modules*** : require('http');
-  - ***2.Developer modules*** : require('./lib/controller);
-  - ***3.3rd-party modules (from NPM)*** : require('express').
-- **2.Wrapping**
+
+  - **_1.Core modules_** : require('http');
+  - **_2.Developer modules_** : require('./lib/controller);
+  - **_3.3rd-party modules (from NPM)_** : require('express').
+
+- **2.Wrapping**: after loading modules, module code wrap in special function which will gave us couple of special object.
+
+```javascript
+(function(exports, require, module, __filename, __dirname) {
+  // Module code lives here...
+});
+
 - **3.Execution**
 - **4.Returning exports**
 - **5.Caching**
+
+```

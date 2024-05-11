@@ -361,16 +361,19 @@ Back pressure is a phenomenon in stream processing where the rate of data produc
 effective management of back pressure is crucial for ensuring the stability, performance, and reliability of Node.js applications that process streaming data. By implementing appropriate strategies and mechanisms, developers can mitigate the impact of back pressure and ensure smooth operation of stream processing pipelines.
 
 Scenarios where back pressure can occur include:
+
 1. Reading from a fast data source into a slow consumer.
 2. Processing large amounts of data without sufficient resources to handle it.
 3. Inadequate flow control mechanisms in the stream processing pipeline.
 
 The consequences of unmanaged back pressure include:
+
 - Increased memory usage due to buffering of excess data.
 - Potential loss of data if the buffer overflows or data is dropped.
 - Degraded performance and responsiveness of the application.
 
 To handle back pressure in Node.js streams, various strategies and mechanisms can be employed:
+
 1. **Flow Control**: Implementing flow control mechanisms to regulate the rate of data flow through the stream pipeline. This can involve pausing or throttling the data producer when the consumer is unable to keep up.
 2. **Buffering**: Using buffers to temporarily store excess data until it can be processed or written by the consumer. However, excessive buffering can lead to increased memory usage and potential delays.
 3. **Back Pressure-aware Streams**: Utilizing streams that are designed to handle back pressure effectively, such as the `Readable` and `Writable` streams provided by Node.js. These streams can automatically adjust their behavior based on the back pressure signals from the consumer.
@@ -378,3 +381,10 @@ To handle back pressure in Node.js streams, various strategies and mechanisms ca
 5. **Error Handling**: Implementing error handling mechanisms to detect and respond to back pressure-related issues, such as buffer overflows or data loss. This may involve retrying failed operations or gracefully handling errors to prevent application crashes.
 
 In short,back pressure happend when response cant sent data nearly as fast as it it recieving it.
+
+## The CommonJS module system
+
+- Each javaScript file is treated as seperate module.
+- Node.js uses the CommonJS module System: require(),export or module.exports
+- ES module system is used in browsers: import/export;
+- There have been attempts to bring ES modules to node.js (.mjs).

@@ -347,3 +347,32 @@ It's a powerful mechanism for building asynchronous, event-driven applications i
 - Duplex Streams
 - Transform Streams
   Note: Streams are instance of EventEmiiter class, meaning all streams can emit and listen all name event.
+
+## Back Pressure
+
+**Question:**
+
+What is back pressure in stream processing, and how does it relate to Node.js streams? Explain the scenarios where back pressure can occur and discuss the consequences of unmanaged back pressure. Additionally, describe the strategies and mechanisms available in Node.js to handle back pressure effectively.
+
+**Solution:**
+
+Back pressure is a phenomenon in stream processing where the rate of data production exceeds the rate of data consumption, resulting in a backlog or buildup of data within the processing pipeline. In Node.js streams, back pressure occurs when data is read from a readable stream at a faster rate than it can be processed or written to a writable stream.
+
+effective management of back pressure is crucial for ensuring the stability, performance, and reliability of Node.js applications that process streaming data. By implementing appropriate strategies and mechanisms, developers can mitigate the impact of back pressure and ensure smooth operation of stream processing pipelines.
+
+Scenarios where back pressure can occur include:
+1. Reading from a fast data source into a slow consumer.
+2. Processing large amounts of data without sufficient resources to handle it.
+3. Inadequate flow control mechanisms in the stream processing pipeline.
+
+The consequences of unmanaged back pressure include:
+- Increased memory usage due to buffering of excess data.
+- Potential loss of data if the buffer overflows or data is dropped.
+- Degraded performance and responsiveness of the application.
+
+To handle back pressure in Node.js streams, various strategies and mechanisms can be employed:
+1. **Flow Control**: Implementing flow control mechanisms to regulate the rate of data flow through the stream pipeline. This can involve pausing or throttling the data producer when the consumer is unable to keep up.
+2. **Buffering**: Using buffers to temporarily store excess data until it can be processed or written by the consumer. However, excessive buffering can lead to increased memory usage and potential delays.
+3. **Back Pressure-aware Streams**: Utilizing streams that are designed to handle back pressure effectively, such as the `Readable` and `Writable` streams provided by Node.js. These streams can automatically adjust their behavior based on the back pressure signals from the consumer.
+4. **HighWaterMark Option**: Configuring the `highWaterMark` option in streams to control the size of internal buffers. By adjusting the buffer size, you can optimize memory usage and reduce the risk of buffer overflow.
+5. **Error Handling**: Implementing error handling mechanisms to detect and respond to back pressure-related issues, such as buffer overflows or data loss. This may involve retrying failed operations or gracefully handling errors to prevent application crashes.

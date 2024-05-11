@@ -384,7 +384,7 @@ In short,back pressure happend when response cant sent data nearly as fast as it
 
 ## The CommonJS module system
 
-- Each javaScript file is treated as seperate module.
-- Node.js uses the CommonJS module System: require(),export or module.exports
-- ES module system is used in browsers: import/export;
-- There have been attempts to bring ES modules to node.js (.mjs).
+- 👉 Each javaScript file is treated as seperate module.
+- 👉 Node.js uses the CommonJS module System: require(),export or module.exports
+- 👉 ES module system is used in browsers: import/export;
+- 👉 There have been attempts to bring ES modules to node.js (.mjs).

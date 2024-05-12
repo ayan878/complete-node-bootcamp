@@ -410,7 +410,7 @@ This is an Immediately Invoked Function Expression (IIFE), which means it's a fu
 
 
 - **3.Execution**: Module code is immediately executed upon requiring the module, running any JavaScript statements defined within it.
-- **4.Returning exports**
+- **4.Returning exports**: The module can export values using module.exports or exports, which are returned to other modules that require it.
 - **5.Caching**
 
 ```

@@ -401,16 +401,14 @@ In short,back pressure happend when response cant sent data nearly as fast as it
 - **2.Wrapping**: after loading modules, module code wrap in special function which will gave us couple of special object.
 
 ```javascript
-(function(exports, require, module, __filename, __dirname) {
+(function (exports, require, module, __filename, __dirname) {
   // Module code lives here...
 });
 ```
+
 This is an Immediately Invoked Function Expression (IIFE), which means it's a function that's executed immediately after it's defined. The purpose of this wrapper function is to encapsulate the module code and provide a separate scope for it.
-
-
 
 - **3.Execution**: Module code is immediately executed upon requiring the module, running any JavaScript statements defined within it.
 - **4.Returning exports**: The module can export values using module.exports or exports, which are returned to other modules that require it.
-- **5.Caching**
+- **5.Caching**: Node.js caches required modules to improve performance, avoiding re-execution of the same module code on subsequent requires.
 
-```

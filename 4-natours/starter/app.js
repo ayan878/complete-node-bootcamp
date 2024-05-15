@@ -73,10 +73,22 @@ app.patch('/api/v1/tours/:id', (req, res) => {
     return res.status(404).json({ status: 'failed', message: 'Invalid ID' });
   }
   res.status(200).json({
-    status: 'succes',
+    status: 'success',
     data: {
       tour: '<Updated tour here...',
     },
+  });
+});
+
+app.delete('/api/v1/tours/:id', (req, res) => {
+  const tour = tours.find((el) => el.id === req.params.id * 1);
+
+  if (!tour) {
+    return res.status(404).json({ status: 'failed', message: 'Invalid ID' });
+  }
+  res.status(204).json({
+    status: 'success',
+    data: null,
   });
 });
 

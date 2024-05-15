@@ -33,10 +33,10 @@ Sure, here's an example demonstrating the use of V8 and libuv in a Node.js appli
       console.log("Reading file asynchronously using libuv...");
       ```
 
-      In this example:
+In this example:
 
-      - V8 executes the JavaScript code `const result = 2 + 3;`, performing simple arithmetic operations.
-      - libuv is used for asynchronous I/O operations, such as reading a file asynchronously using `fs.readFile()`. The event loop provided by libuv ensures that the file I/O operation does not block the main thread, allowing the Node.js application to remain responsive.
+- V8 executes the JavaScript code `const result = 2 + 3;`, performing simple arithmetic operations.
+- libuv is used for asynchronous I/O operations, such as reading a file asynchronously using `fs.readFile()`. The event loop provided by libuv ensures that the file I/O operation does not block the main thread, allowing the Node.js application to remain responsive.
 
 - **node.js not only relies on V8 and libuv but also on http-parser, c-ares, OpenSSL,zlib.**
 
@@ -94,15 +94,13 @@ In simple terms, Node.js can juggle multiple tasks at once, even though it techn
   });
   ```
 
-````
-
 - **Execution of Top-Level Code**: All code present at the top level of the application is executed in sequence. This could involve variable declarations, function definitions, and other synchronous operations.
 
- ```javascript
- // Example of top-level code execution
- const greeting = "Hello, World!";
- console.log(greeting);
-````
+```javascript
+// Example of top-level code execution
+const greeting = "Hello, World!";
+console.log(greeting);
+```
 
 - **Loading Required Modules**: Node.js loads all required modules, including core modules and external dependencies, to prepare the environment for execution.
 

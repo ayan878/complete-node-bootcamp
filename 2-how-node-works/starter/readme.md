@@ -9,6 +9,35 @@
 
   - node.js itself is program which is written in Js and C++.it ties all the library together not matter written in C++ or Jsand gives developer to access their function in pure JavaScript.
 
+  Sure, here's an example demonstrating the use of V8 and libuv in a Node.js application:
+
+      ```javascript
+      // Example demonstrating V8 and libuv in Node.js
+
+      // Using V8 to execute JavaScript code
+      const result = 2 + 3; // V8 engine executes this JavaScript code
+      console.log("Result from V8:", result);
+
+      // Using libuv for asynchronous I/O
+      const fs = require("fs");
+
+      // Reading a file asynchronously using libuv
+      fs.readFile("example.txt", "utf8", (err, data) => {
+        if (err) {
+          console.error("Error reading file:", err);
+          return;
+        }
+        console.log("Data from file:", data);
+      });
+
+      console.log("Reading file asynchronously using libuv...");
+      ```
+
+      In this example:
+
+      - V8 executes the JavaScript code `const result = 2 + 3;`, performing simple arithmetic operations.
+      - libuv is used for asynchronous I/O operations, such as reading a file asynchronously using `fs.readFile()`. The event loop provided by libuv ensures that the file I/O operation does not block the main thread, allowing the Node.js application to remain responsive.
+
 - **node.js not only relies on V8 and libuv but also on http-parser, c-ares, OpenSSL,zlib.**
 
   - **1. http-parser**: This is a HTTP request/response parser written in C, which Node.js uses to efficiently parse HTTP messages.
@@ -400,7 +429,6 @@ In short,back pressure happend when response cant sent data nearly as fast as it
 
   ![Alt Text](./resolving-&-loading.jpg)
 
-
 - **2.Wrapping**: after loading modules, module code wrap in special function which will gave us couple of special object.
 
 ```javascript
@@ -408,13 +436,13 @@ In short,back pressure happend when response cant sent data nearly as fast as it
   // Module code lives here...
 });
 ```
+
 ![Alt Text](./wrapping.jpg)
 
 This is an Immediately Invoked Function Expression (IIFE), which means it's a function that's executed immediately after it's defined. The purpose of this wrapper function is to encapsulate the module code and provide a separate scope for it.
 
 - **3.Execution**: Module code is immediately executed upon requiring the module, running any JavaScript statements defined within it.
 - **4.Returning exports**: The module can export values using module.exports or exports, which are returned to other modules that require it.
-![Alt Text](./returning-export.jpg)
-
+  ![Alt Text](./returning-export.jpg)
 
 - **5.Caching**: Node.js caches required modules to improve performance, avoiding re-execution of the same module code on subsequent requires.

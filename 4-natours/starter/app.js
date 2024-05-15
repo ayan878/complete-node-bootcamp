@@ -40,7 +40,7 @@ app.get('/api/v1/tours/:id', (req, res) => {
   if (!tour) {
     return res.status(404).json({ status: 'failed', message: 'Invalid ID' });
   }
-  
+
   // Respond with the tour data
   res.status(200).json({ status: 'success', data: { tour } });
 });
@@ -65,6 +65,10 @@ app.post('/api/v1/tours', (req, res) => {
     }
   );
 });
+
+app.patch('/api/v1/tours/:id',(req,res)=>{
+    const 
+})
 
 // Starts the Express application server on the specified port.
 const port = 3000;

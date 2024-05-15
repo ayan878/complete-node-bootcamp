@@ -38,7 +38,7 @@ In this example:
 - V8 executes the JavaScript code `const result = 2 + 3;`, performing simple arithmetic operations.
 - libuv is used for asynchronous I/O operations, such as reading a file asynchronously using `fs.readFile()`. The event loop provided by libuv ensures that the file I/O operation does not block the main thread, allowing the Node.js application to remain responsive.
 
-- **node.js not only relies on V8 and libuv but also on http-parser, c-ares, OpenSSL,zlib.**
+## **node.js not only relies on V8 and libuv but also on http-parser, c-ares, OpenSSL,zlib.**
 
   - **1. http-parser**: This is a HTTP request/response parser written in C, which Node.js uses to efficiently parse HTTP messages.
 

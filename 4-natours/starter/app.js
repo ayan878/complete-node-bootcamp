@@ -33,10 +33,10 @@ app.get('/api/v1/tours/:id', (req, res) => {
   //   if (req.params.id * 1 > tours.length) {
   //     return res.status(404).json({ status: 'failed', message: 'Invalid ID' });
   //   }
-  
+
   // Find the tour with the provided ID
   const tour = tours.find((el) => el.id === req.params.id * 1);
-  
+
   if (!tour) {
     return res.status(404).json({ status: 'failed', message: 'Invalid ID' });
   }
@@ -66,9 +66,19 @@ app.post('/api/v1/tours', (req, res) => {
   );
 });
 
-app.patch('/api/v1/tours/:id',(req,res)=>{
-    const 
-})
+app.patch('/api/v1/tours/:id', (req, res) => {
+  const tour = tours.find((el) => el.id === req.params.id * 1);
+
+  if (!tour) {
+    return res.status(404).json({ status: 'failed', message: 'Invalid ID' });
+  }
+  res.status(200).json({
+    status: 'succes',
+    data: {
+      tour: '<Updated tour here...',
+    },
+  });
+});
 
 // Starts the Express application server on the specified port.
 const port = 3000;

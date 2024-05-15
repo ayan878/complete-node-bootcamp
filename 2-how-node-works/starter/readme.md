@@ -65,18 +65,44 @@ In simple terms, Node.js can juggle multiple tasks at once, even though it techn
 - **Initialization**: When we start a Node.js application, the program initializes by executing the top-level code. This includes loading all required modules and registering any callbacks needed for asynchronous operations.
 
   ```javascript
-  // Example of top-level code
-  const fs = require("fs");
+  // 1. Loading Required Modules
   const http = require("http");
+  const fs = require("fs");
+
+  // 2. Defining Top-Level Code
+  console.log("Initializing Node.js application...");
+
+  // 3. Registering Callbacks for Asynchronous Operations
+  fs.readFile("data.txt", "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading file:", err);
+      return;
+    }
+    console.log("File content:", data);
+  });
+
+  // 4. Creating HTTP Server
+  const server = http.createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello, world!\n");
+  });
+
+  // 5. Listening for Incoming Requests
+  const PORT = process.env.PORT || 3000;
+  server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+  });
   ```
+
+````
 
 - **Execution of Top-Level Code**: All code present at the top level of the application is executed in sequence. This could involve variable declarations, function definitions, and other synchronous operations.
 
-  ```javascript
-  // Example of top-level code execution
-  const greeting = "Hello, World!";
-  console.log(greeting);
-  ```
+ ```javascript
+ // Example of top-level code execution
+ const greeting = "Hello, World!";
+ console.log(greeting);
+````
 
 - **Loading Required Modules**: Node.js loads all required modules, including core modules and external dependencies, to prepare the environment for execution.
 

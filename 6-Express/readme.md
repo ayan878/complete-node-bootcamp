@@ -141,19 +141,19 @@ The `express.json()` middleware is used in Express to parse JSON request bodies.
 Here's how it works:
 
 ```javascript
-const express = require('express');
+const express = require("express");
 const app = express();
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
 // Define routes and handle requests
-app.post('/api/users', (req, res) => {
+app.post("/api/users", (req, res) => {
   // Access JSON request body data from req.body
   console.log(req.body);
 
   // Process request and send response
-  res.status(200).send('User created successfully.');
+  res.status(200).send("User created successfully.");
 });
 
 // Start the Express server
@@ -164,6 +164,22 @@ app.listen(port, () => {
 ```
 
 Explanation:
+
 - We use `app.use(express.json())` to enable JSON request body parsing middleware in our Express application.
 - When a client sends a POST request to `/api/users` with JSON data in the request body, the `express.json()` middleware parses the JSON data and makes it available on `req.body` in our route handler.
 - We can then access the parsed JSON data from `req.body` and process it accordingly in our route handler.
+
+## Params
+
+## Handling PATCH Requests:
+
+- we have two http method to update the data.
+
+1. PUT
+2. PATCH
+
+- PATCH is an HTTP method used to partially update a resource. It is used when you want to make a partial update to an existing resource without modifying the entire resource.
+- Unlike PUT, which requires you to send the entire updated resource, PATCH allows you to send only the changes or updates that need to be applied.
+- This makes PATCH more efficient for updating resources when you only want to modify specific fields or properties.
+- When handling PATCH requests in an API, you need to implement logic to parse the incoming request, identify the fields that need to be updated, and apply the changes to the resource accordingly.
+- PATCH requests are commonly used in RESTful APIs for updating individual fields or properties of resources without replacing the entire resource.

@@ -89,3 +89,22 @@ printFullName.apply(user3, ["Pachrukhi", "Bihar"]);
 let printMyName = printFullName.bind(user, "Siwan", "Bihar");
 console.log(printMyName); // it print the function
 printMyName();
+
+const printReturnValue = (getAge = function () {
+  return { name: this.name, age: this.age };
+});
+var person = {
+  name: "neha",
+  age: 23,
+};
+var person2 = {
+  name: "ayan",
+  age: 24,
+};
+
+console.log(getAge.call(person));
+console.log(printReturnValue);
+// console.log(getAge.call(person2));
+
+// console.log(getAge.bind(person));
+// console.log(getAge.bind(person2));

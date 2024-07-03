@@ -451,7 +451,7 @@ In short,back pressure happend when response cant sent data nearly as fast as it
   - **_2.Developer modules_** : require('./lib/controller);
   - **_3.3rd-party modules (from NPM)_** : require('express').
 
-  ![Alt Text](./resolving-&-loading.jpg)
+  ![Alt Text](./starter/resolving-&-loading.jpg)
 
 - **2.Wrapping**: after loading modules, module code wrap in special function which will gave us couple of special object.
 
@@ -461,12 +461,13 @@ In short,back pressure happend when response cant sent data nearly as fast as it
 });
 ```
 
-![Alt Text](./wrapping.jpg)
+![Alt Text](./starter/wrapping.jpg)
+
 
 This is an Immediately Invoked Function Expression (IIFE), which means it's a function that's executed immediately after it's defined. The purpose of this wrapper function is to encapsulate the module code and provide a separate scope for it.
 
 - **3.Execution**: Module code is immediately executed upon requiring the module, running any JavaScript statements defined within it.
 - **4.Returning exports**: The module can export values using module.exports or exports, which are returned to other modules that require it.
-  ![Alt Text](./returning-export.jpg)
+  ![Alt Text](./starter/returning-export.jpg)
 
 - **5.Caching**: Node.js caches required modules to improve performance, avoiding re-execution of the same module code on subsequent requires.
